@@ -186,7 +186,11 @@ def validar(jogada):
       return False
 
 # 07 - Função que deleta uma jogada requerida pelo jogador:
-
+  def verificar_pista(jogada,lista):
+      if jogada not in lista:
+          return True 
+      else:
+          return False       
 
 
 
