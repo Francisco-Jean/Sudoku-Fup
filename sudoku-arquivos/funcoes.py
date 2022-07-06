@@ -191,7 +191,6 @@ def validar(jogada):
 # 07 - Função que deleta uma jogada requerida pelo jogador:
 
 def deletar(a):
-    #ex:DELETAR(DA,8)
     col=(a[2]) 
     col=col.upper()
     lin=a[4]
