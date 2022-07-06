@@ -165,13 +165,15 @@ def verificador(col,lin,valor):
         
 
     passe = True
-
+a,5:7
 # 05 - Função que verifica se uma jogada coincide com uma pista:
-def verificar_pista(jogada,lista):
-      if jogada not in lista:
-          return True 
-      else:
-          return False       
+def verificar_pista(jogada,matriz):
+  jogada=jogada.upper()
+  for i in range(9):
+    for j in range(9):
+      if jogada==matriz[i][j]:
+        return False 
+  return True      
 
 # 06 - Função que verifica se uma jogada é válida:
 def validar(jogada):
@@ -204,4 +206,6 @@ def deletar(a):
         print('Uma pista não pode ser apagada')
 
 
+
+ 
 
