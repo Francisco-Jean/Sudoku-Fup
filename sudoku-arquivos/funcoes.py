@@ -189,13 +189,13 @@ def validar(jogada):
       return False
 
 # 07 - Função que deleta uma jogada requerida pelo jogador:
-
 def deletar(a):
+    # a = Dcol,linha
     col=(a[2]) 
     col=col.upper()
     lin=a[4]
    
-    #Lista com a coluna e linha(a)
+    #Lista de uma célula com a coluna e linha(a)
     col_lin=[col,lin]
     #Lista com apenas a coluna e linha de cada jogada anterior da lista l de jogadas(linha,coluna,valor)
     l2=list(range(l))
@@ -203,7 +203,7 @@ def deletar(a):
     for i in range(len(l)):
         l2[i]=l[i][1,3]
 
-    if verificar_pista()==True and col_lin not in l2
+    if verificar_pista()==True:
         matriz[n][m] = ' '
     else:
         print('Uma pista não pode ser apagada')
