@@ -176,32 +176,27 @@ def verificar_pista(jogada,lista):
 # 06 - Função que verifica se uma jogada é válida:
 def validar(jogada):
   col=['A', 'B', 'C' ,'D', 'E', 'F', 'G', 'H', 'I']
-  #transformando as celulas da lista nos seus respectivos tipos corretos
+  
+  #Verificando os tipos da coluna, linha e valor. 
   j=jogada[0].upper()
   try:
     i=int(jogada[2])
     k=int(jogada[4])
   except:
     return False
-    #condições pra validar a jogada
+ 
+# Condições pra validar a jogada:
   if type(i)!=int or type(k)!=int or j not in col or i>9 or i<1 or k>9 or k<1 :
       print('Jogada Inválida.Entre um novo valor.')
       return False
 
 # 07 - Função que deleta uma jogada requerida pelo jogador:
 def deletar(a):
-    # a = Dcol,linha
-    col=(a[2]) 
+    # a = Dcol,lin
+    col=(a[1]) 
     col=col.upper()
-    lin=a[4]
+    lin=a[3]
    
-    #Lista de uma célula com a coluna e linha(a)
-    col_lin=[col,lin]
-    #Lista com apenas a coluna e linha de cada jogada anterior da lista l de jogadas(linha,coluna,valor)
-    l2=list(range(l))
-   
-    for i in range(len(l)):
-        l2[i]=l[i][1,3]
 
     if verificar_pista()==True:
         matriz[n][m] = ' '
