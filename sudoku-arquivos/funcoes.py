@@ -1,5 +1,5 @@
 # 01 - Função para a organização e print da grade do jogo 
-# apartir de uma lista de coordenadas e valores:
+# A partir de uma lista de coordenadas e valores:
 def montarGrade(c):
   grade = [[' '] * 9 for x in range(9)]
   # Referências das colunas da grade (A,B,...,'I') aos índices das colunas da matriz 'grade':
@@ -61,7 +61,7 @@ def matriz(lin, col, val):
 
 def verificador(col,lin,valor):
   
-  #TRANSDORMAR LETRA EM NUMERO
+  #TRANSFORMAR AS LETRAS DA COLUNA EM SEUS RESPECTIVOS NÚMEROS
   let=['A', 'B', 'C' ,'D', 'E', 'F', 'G', 'H', 'I']
   col = col.upper()
   for i in range(25):
