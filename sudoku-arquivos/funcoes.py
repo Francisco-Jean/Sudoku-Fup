@@ -192,16 +192,34 @@ def validar(jogada):
       print('Jogada Inválida.Entre um novo valor.')
       return False
 
-# 07 - Função que deleta uma jogada requerida pelo jogador:
-def deletar(a):
-    # a = Dcol,lin
-    col=(a[1]) 
-    col=col.upper()
-    lin=a[3]
-   
+#07- Função que converte as letras da coluna em números:
+def letra_num(valor):
+    col=['A', 'B', 'C' ,'D', 'E', 'F', 'G', 'H', 'I']
+    valor = valor.upper()
+    for i in range(10):
+        if valor == col[i-1]:
+            print(i)
 
-    if verificar_pista()==True:
-        matriz[n][m] = ' '
+            
+# 08 - Função que deleta uma jogada requerida pelo jogador:
+def deletar(comando,matriz):
+    # comando= Dcol,lin
+    coluna=comando[1]
+    coluna=coluna.upper()
+    coluna=letra_num(coluna)
+    linha=comando[3]
+    
+    #matriz= grade atual
+    def verificarpista(comando,matriz):
+        for i in range(9):
+            for j in range(9):
+                if comando[1]==matriz[j] and comando[3]==matriz[i]
+                    return False 
+        return True      
+    
+    
+    if verificar_pista([comando[1,3],matriz])==True:
+        matriz[col][lin] = ' '
     else:
         print('Uma pista não pode ser apagada')
 
