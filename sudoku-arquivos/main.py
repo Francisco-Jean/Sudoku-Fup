@@ -32,7 +32,6 @@ except:
                 print("Jogada invalida")
             else:
                 lance = fun.verificar_pista
-
                 jogada = fun.organizarEntradas(jogada)
                 if jogada[0] == 'D' or jogada[0] == "d" and len(jogada) == 4:
                     pass
@@ -41,6 +40,8 @@ except:
                     if valida:
                         compara = True
                         if compara:
+                            coluna = fun.letra_num(jogada[0])
+                            linha = int(jogada[2])
                             matriz_jogadas[int(jogada[])]
                             fun.montarGrade(lista_jogadas)
                             if len(lista_jogadas) == 81:
