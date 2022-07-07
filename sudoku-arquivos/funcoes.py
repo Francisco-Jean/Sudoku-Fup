@@ -1,17 +1,9 @@
 # 01 - Função para a organização e print da grade do jogo 
 # A partir de uma lista de coordenadas e valores:
-def montarGrade(c):
-  grade = [[' '] * 9 for x in range(9)]
+def montarGrade(grade):
   # Referências das colunas da grade (A,B,...,'I') aos índices das colunas da matriz 'grade':
-  colunas = {'A':0, 'B':1, 'C':2, 'D':3, 'E':4, 'F':5, 'G':6, 'H':7, 'I':8, 'a':0, 'b':1, 
-  'c':2, 'd':3, 'e':4, 'f':5, 'g':6, 'h':7, 'i':8}
-
-  # Verificação do conteúdo da jogada e inserção do valor na matriz 'grade':
-  for x in c:
-    try:
-      grade[int(x[2]) -1][int(colunas[x[0]])] = x[4]
-    except:
-      print(f"A Jogada '{x}' é inválida!")
+  '''colunas = {'A':0, 'B':1, 'C':2, 'D':3, 'E':4, 'F':5, 'G':6, 'H':7, 'I':8, 'a':0, 'b':1, 
+  'c':2, 'd':3, 'e':4, 'f':5, 'g':6, 'h':7, 'i':8}'''
   
   # Print da grade formatada:
   print("     A   B   C    D   E   F    G   H   I    ")
@@ -37,18 +29,21 @@ def organizarEntradas(data):
   if str(type(data)) == "<class 'str'>":
     return data.replace(" ", "")
   elif str(type(data)) == "<class 'list'>":
-    for i in range(len(data)):
-      data[i] = data[i].replace(" ", "")
+    for i in range(9):
+          for j in range(9):
+              data[i][j] = data[i][j].replace(" ", "")
     return data
 
 
-# 03 - Função que acessa um arquivo e retorna uma lista com as jogadas/dicas contidas nele:
+# 03 - Função que acessa um arquivo e retorna uma matriz com as jogadas/dicas contidas nele:
 def acessarArquivo(arq):
-    l = []
+    l = [[' '] * 9 for x in range(9)]
+    let = ['A', 'B', 'C' ,'D', 'E', 'F', 'G', 'H', 'I']
     data = open(arq, 'r')
     for valor in data:
         valor = valor.strip()
-        l.append(valor)
+        valor = valor.upper()
+        l[int(valor[2]) -1][let.index(valor[0])] = valor[4]
     return l
 
 # 04 - Função que verifica se as jogadas contidas em uma lista ou inseridas pelo jogador
@@ -59,7 +54,7 @@ def matriz(lin, col, val):
   return m
 
 
-def verificador(col,lin,valor):
+def verificador(col,lin,valor,a):
   
   #TRANSFORMAR AS LETRAS DA COLUNA EM SEUS RESPECTIVOS NÚMEROS
   let=['A', 'B', 'C' ,'D', 'E', 'F', 'G', 'H', 'I']
@@ -188,9 +183,11 @@ def validar(jogada):
     return False
  
 # Condições pra validar a jogada:
-  if type(i)!=int or type(k)!=int or j not in col or i>9 or i<1 or k>9 or k<1 :
+  if  (j not in col) or i > 9 or i < 1 or k > 9 or k < 1 :
       print('Jogada Inválida.Entre um novo valor.')
       return False
+  else:
+      return True
 
 # 07 - Função que deleta uma jogada requerida pelo jogador:
 def deletar(a):
