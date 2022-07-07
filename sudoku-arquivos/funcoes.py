@@ -205,7 +205,15 @@ def num_letra(valor):
         if valor==col[c]:
             return c
             
-# 09 - Função que deleta uma jogada requerida pelo jogador:
+ #09-Função de verificar pista alterada pra usar na função 10
+ def verificarpista(comando,matriz):
+        for i in range(9):
+            for j in range(9):
+                if comando[1]==matriz[j] and comando[3]==matriz[i]:
+                    return False 
+        return True      
+
+# 10 - Função que deleta uma jogada requerida pelo jogador:
 def deletar(comando,matriz):
     # comando= Dcol,lin
     coluna=comando[1]
@@ -214,16 +222,9 @@ def deletar(comando,matriz):
     linha=comando[3]
     
     #matriz= grade atual
-    def verificarpista(comando,matriz):
-        for i in range(9):
-            for j in range(9):
-                if comando[1]==matriz[j] and comando[3]==matriz[i]:
-                    return False 
-        return True      
-    
-    
+  
     if verificarpista([comando[1,3],matriz])==True:
-        matriz[col][lin] = ' '
+        matriz[i][j] = ' '
     else:
         print('Uma pista não pode ser apagada')
 
