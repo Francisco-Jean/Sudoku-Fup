@@ -165,7 +165,7 @@ def verificador(col,lin,valor):
         
 
     passe = True
-a,5:7
+
 # 05 - Função que verifica se uma jogada coincide com uma pista:
 def verificar_pista(jogada,matriz):
   jogada=jogada.upper()
