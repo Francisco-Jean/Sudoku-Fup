@@ -31,7 +31,7 @@ except:
             if not lance:
                 print("Jogada invalida")
             else:
-                lance = fun.verificar_pista
+                lance = fun.verificar_pista(jogada, matriz_jogadas)
                 jogada = fun.organizarEntradas(jogada)
                 if jogada[0] == 'D' or jogada[0] == "d" and len(jogada) == 4:
                     pass
@@ -42,9 +42,9 @@ except:
                         if compara:
                             coluna = fun.letra_num(jogada[0])
                             linha = int(jogada[2])
-                            matriz_jogadas[int(jogada[])]
-                            fun.montarGrade(lista_jogadas)
-                            if len(lista_jogadas) == 81:
+                            matriz_jogadas[int(jogada[4]) -1][fun.letra_num(jogada[0])]
+                            fun.montarGrade(matriz_jogadas)
+                            if len(matriz_jogadas) == 81:
                                 jogo = False
                                 print('Parabéns! Você conseguiu preencher toda a grade do jogo! :)')
                         else:

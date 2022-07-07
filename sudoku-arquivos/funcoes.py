@@ -217,12 +217,12 @@ def deletar(comando,matriz):
     def verificarpista(comando,matriz):
         for i in range(9):
             for j in range(9):
-                if comando[1]==matriz[j] and comando[3]==matriz[i]
+                if comando[1]==matriz[j] and comando[3]==matriz[i]:
                     return False 
         return True      
     
     
-    if verificar_pista([comando[1,3],matriz])==True:
+    if verificarpista([comando[1,3],matriz])==True:
         matriz[col][lin] = ' '
     else:
         print('Uma pista não pode ser apagada')
