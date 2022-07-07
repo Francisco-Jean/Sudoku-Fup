@@ -195,10 +195,17 @@ def letra_num(valor):
     valor = valor.upper()
     for i in range(10):
         if valor == col[i-1]:
-            print(i)
-
+            return i
             
-# 08 - Função que deleta uma jogada requerida pelo jogador:
+#08- Função que converte os números da coluna em suas respectivas letras:
+def num_letra(valor):
+    col={'A':1, 'B':2, 'C':3, 'D':4, 'E':5, 'F':6, 'G':7, 'H':8, 'I':9}
+
+    for c in col:
+        if valor==col[c]:
+            return c
+            
+# 09 - Função que deleta uma jogada requerida pelo jogador:
 def deletar(comando,matriz):
     # comando= Dcol,lin
     coluna=comando[1]
