@@ -41,150 +41,150 @@ def acessarArquivo(arq):
     let = ['A', 'B', 'C' ,'D', 'E', 'F', 'G', 'H', 'I']
     data = open(arq, 'r')
     for valor in data:
-        valor = valor.strip()
-        valor = valor.upper()
-        l[int(valor[2]) -1][let.index(valor[0])] = valor[4]
+        if l[int(valor[2]) -1][let.index(valor[0])] == ' ':
+            valor = valor.strip()
+            valor = valor.upper()
+            l[int(valor[2]) -1][let.index(valor[0])] = int(valor[4])
     return l
 
 # 04 - Função que verifica se as jogadas contidas em uma lista ou inseridas pelo jogador
 # estão dentro das regras do jogo:
 
 def verificador(col,lin,valor,a):
-  
   #TRANSFORMAR AS LETRAS DA COLUNA EM SEUS RESPECTIVOS NÚMEROS
-  let=['A', 'B', 'C' ,'D', 'E', 'F', 'G', 'H', 'I']
-  col = col.upper()
-  for i in range(25):
-    if col == let[i]:
-      col = i+1
+    let = ['A', 'B', 'C' ,'D', 'E', 'F', 'G', 'H', 'I']
+    col = col.upper()
+    for i in range(9):
+        if col == let[i]:
+            col = i+1
+            col = int(col)
 
 
 #VERIFICAR OS QUADRADOS 3X3
-  passe = True
+    passe = True
 
-  if lin-1 <= 2 and col-1 <=2:
-    for i in range(3):
-      for j in range(3):
-        if a[i][j] == valor :
-          print("Jogada impossibilitada")
-          passe = False
-          break
-  elif lin-1 <= 2 and col-1 > 2 and col-1 <= 5:
-    for i in range(3):
-      for j in range(3,6):
-        if a[i][j] == valor :
-          print("Jogada impossibilitada")
-          passe = False
-          break
-  elif lin-1 <=2 and col-1 >= 6:
-    for i in range(3):
-      for j in range(6,9):
-        if a[i][j] == valor :
-          print("Jogada impossibilitada")
-          passe = False
-          break
-  elif lin-1 >= 3 and lin-1 <= 5 and col-1 <= 2:
-    for i in range(3,6):
-      for j in range(3):
-        if a[i][j] == valor :
-          print("Jogada impossibilitada")
-          passe = False
-          break
-  elif lin-1 >= 3 and lin-1 <= 5 and col-1 >=3 and col-1 <= 5:
-    for i in range(3,6):
-      for j in range(3,6):
-        if a[i][j] == valor :
-          print("Jogada impossibilitada")
-          passe = False
-          break
-  elif lin-1 >= 3 and lin-1 <= 5 and col-1 >= 6:
-    for i in range(3,6):
-      for j in range(6,9):
-        if a[i][j] == valor :
-          print("Jogada impossibilitada")
-          passe = False
-          break
-  elif lin-1 >=6 and col-1 <=2:
-    for i in range(6,9):
-      for j in range(3):
-        if a[i][j] == valor :
-          print("Jogada impossibilitada")
-          passe = False
-          break
-  elif lin-1 >= 6 and col-1 >= 3 and col-1 <= 5:
-    for i in range(6,9):
-      for j in range(3,6):
-        if a[i][j] == valor :
-          print("Jogada impossibilitada")
-          passe = False
-          break
-  elif lin-1 >= 6 and col-1 >= 6:
-    for i in range(6,9):
-      for j in range(6,9):
-        if a[i][j] == valor :
-          print("Jogada impossibilitada")
-          passe = False
-          break
-  if passe == False:
-    return False
-   
-  aux = True
+    if lin-1 <= 2 and col-1 <=2:
+        for i in range(3):
+            for j in range(3):
+                if a[i][j] == valor :
+    
+                    passe = False
+                    break
+    elif lin-1 <= 2 and col-1 > 2 and col-1 <= 5:
+        for i in range(3):
+            for j in range(3,6):
+                if a[i][j] == valor :
+    
+                    passe = False
+                    break
+    elif lin-1 <=2 and col-1 >= 6:
+        for i in range(3):
+            for j in range(6,9):
+                if a[i][j] == valor :
+    
+                    passe = False
+                    break
+    elif lin-1 >= 3 and lin-1 <= 5 and col-1 <= 2:
+        for i in range(3,6):
+            for j in range(3):
+                if a[i][j] == valor :
+    
+                    passe = False
+                    break
+    elif lin-1 >= 3 and lin-1 <= 5 and col-1 >=3 and col-1 <= 5:
+        for i in range(3,6):
+            for j in range(3,6):
+                if a[i][j] == valor :
+    
+                    passe = False
+                    break
+    elif lin-1 >= 3 and lin-1 <= 5 and col-1 >= 6:
+        for i in range(3,6):
+            for j in range(6,9):
+                if a[i][j] == valor :
+    
+                    passe = False
+                    break
+    elif lin-1 >=6 and col-1 <=2:
+        for i in range(6,9):
+            for j in range(3):
+                if a[i][j] == valor :
+    
+                    passe = False
+                    break
+    elif lin-1 >= 6 and col-1 >= 3 and col-1 <= 5:
+        for i in range(6,9):
+            for j in range(3,6):
+                if a[i][j] == valor :
+    
+                    passe = False
+                    break
+    elif lin-1 >= 6 and col-1 >= 6:
+        for i in range(6,9):
+            for j in range(6,9):
+                if a[i][j] == valor :
+    
+                    passe = False
+                    break
+    if passe == False:
+        return False
+    aux = True
   
 #VERIFICAR AS LINHAS
-  for j in range(9):
-    if valor == a[lin-1][j] and j!= col-1 and valor > 0:
-      print("Jogada impossibilitada")
-      print("Tente novamente um valor diferente de %d"%valor)
-      aux = False
-      return False
-      break
-      
-#VERIFICAR AS COLUNAS
-  if aux == True:
-    for i in range(9):
-      if valor == a[i][col-1] and i != lin-1 and valor > 0:
-        print("Jogada impossibilitada")
-        print("Tente novamente")
-        aux = False
-        return False
-        break
-#Adicionar o valor
-  return True
+    for j in range(9):
+        if valor == a[lin-1][j] and j!= col-1:
+            aux = False
+            return False
+        
+    #VERIFICAR AS COLUNAS
+    if aux == True:
+        for i in range(9):
+            if valor == a[i][col-1] and i != lin-1:
+                aux = False
+                return False
+    #Adicionar o valor
+    if aux:
+        return True
 
 # 05 - Função que verifica se uma jogada coincide com uma pista:
 def verificar_pista(jogada,matriz):
-  jogada=jogada.upper()
-  for i in range(9):
-    for j in range(9):
-      if jogada==matriz[i][j]:
-        return False 
-  return True      
+    try:
+        lin=int(jogada[3])-1
+        col=letra_num(jogada[1])
+        if matriz[lin][col] != ' ':
+            print('Sua jogada coincide com uma pista. Entre com uma jogada')
+            return False 
+        return True   
+    except:
+        return False
+
 
 # 06 - Função que verifica se uma jogada é válida:
 def validar(jogada):
-  col=['A', 'B', 'C' ,'D', 'E', 'F', 'G', 'H', 'I']
+    col=['A', 'B', 'C' ,'D', 'E', 'F', 'G', 'H', 'I']
   
   #Verificando os tipos da coluna, linha e valor. 
-  j=jogada[0].upper()
-  try:
-    i=int(jogada[2])
-    k=int(jogada[4])
-  except:
-    return False
+    j=jogada[0].upper()
+    try:
+        i=int(jogada[2])
+        k=int(jogada[4])
+    except:
+        print('Jogada Invalida.Entre um novo valor.')
+        return False
  
 # Condições pra validar a jogada:
-  if  (j not in col) or i > 9 or i < 1 or k > 9 or k < 1 :
-      print('Jogada Inválida.Entre um novo valor.')
-      return False
-  else:
-      return True
+    if  (j not in col) or i > 9 or i < 1 or k > 9 or k < 1 or len(jogada) > 5:
+        print('Jogada Invalida.Entre um novo valor.')
+        return False
+    else:
+        return True
 
 #07- Função que converte as letras da coluna em números:
 def letra_num(valor):
     col=['A', 'B', 'C' ,'D', 'E', 'F', 'G', 'H', 'I']
     valor = valor.upper()
-    for i in range(10):
-        if valor == col[i-1]:
+    for i in range(9):
+        if valor == col[i]:
             return i
             
 #08- Função que converte os números da coluna em suas respectivas letras:
@@ -196,29 +196,43 @@ def num_letra(valor):
             return c
             
  #09-Função de verificar pista alterada pra usar na função 10
- def verificarpista(comando,matriz):
-        for i in range(9):
-            for j in range(9):
-                if comando[1]==matriz[j] and comando[3]==matriz[i]:
-                    return False 
-        return True      
+def verificarpista(comando,matriz):
+    linha = int(comando[2]) -1
+    coluna = letra_num(comando[0])
+    if matriz[linha][coluna] != ' ':
+        print('Sua jogada coincide com uma pista. Entre com uma jogada')
+        return False
+    return True   
 
 # 10 - Função que deleta uma jogada requerida pelo jogador:
-def deletar(comando,matriz):
+def deletar(comando,matriz, pistas):
     # comando= Dcol,lin
-    coluna=comando[1]
-    coluna=coluna.upper()
-    coluna=letra_num(coluna)
-    linha=comando[3]
-    
+    lista = ['A', 'B', 'C' ,'D', 'E', 'F', 'G', 'H', 'I']
+    coluna1=comando[1]
+    coluna1=coluna1.upper()
+    coluna=letra_num(coluna1)
+    try:
+        linha = int(comando[3]) -1
+    except:
+        print("Comando invalido")
+        return False
     #matriz= grade atual
-  
-    if verificarpista([comando[1,3],matriz])==True:
-        matriz[i][j] = ' '
+    if len(comando) == 4 and linha >= 0 and linha < 9 and (coluna1 in lista):
+        if verificar_pista(comando,pistas):
+            matriz[linha][coluna] = ' '
+            return matriz
+        else:
+            print('Uma pista nao pode ser apagada')
+            return False
     else:
-        print('Uma pista não pode ser apagada')
+        print("Comando invalido")
 
 
-
- 
-
+# Função que verifica o tamanho da matriz
+def contar_tamanho(matriz):
+    cont = 0
+    for j in range(9):
+        for i in range(9):
+            if matriz[i][j] != ' ':
+                cont += 1
+    return cont
