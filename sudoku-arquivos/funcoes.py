@@ -49,11 +49,6 @@ def acessarArquivo(arq):
 # 04 - Função que verifica se as jogadas contidas em uma lista ou inseridas pelo jogador
 # estão dentro das regras do jogo:
 
-def matriz(lin, col, val):
-  m = [[val] * col for _ in range(lin)]
-  return m
-
-
 def verificador(col,lin,valor,a):
   
   #TRANSFORMAR AS LETRAS DA COLUNA EM SEUS RESPECTIVOS NÚMEROS
@@ -65,101 +60,96 @@ def verificador(col,lin,valor,a):
 
 
 #VERIFICAR OS QUADRADOS 3X3
-  passe = False
+  passe = True
 
   if lin-1 <= 2 and col-1 <=2:
     for i in range(3):
       for j in range(3):
         if a[i][j] == valor :
-          print("Jogada impossibilitada pelo quadrado 3x3")
-          passe = True
+          print("Jogada impossibilitada")
+          passe = False
           break
   elif lin-1 <= 2 and col-1 > 2 and col-1 <= 5:
     for i in range(3):
       for j in range(3,6):
         if a[i][j] == valor :
-          print("Jogada impossibilitada pelo quadrado 3x3")
-          passe = True
+          print("Jogada impossibilitada")
+          passe = False
           break
   elif lin-1 <=2 and col-1 >= 6:
     for i in range(3):
       for j in range(6,9):
         if a[i][j] == valor :
-          print("Jogada impossibilitada pelo quadrado 3x3")
-          passe = True
+          print("Jogada impossibilitada")
+          passe = False
           break
   elif lin-1 >= 3 and lin-1 <= 5 and col-1 <= 2:
     for i in range(3,6):
       for j in range(3):
         if a[i][j] == valor :
-          print("Jogada impossibilitada pelo quadrado 3x3")
-          passe = True
+          print("Jogada impossibilitada")
+          passe = False
           break
   elif lin-1 >= 3 and lin-1 <= 5 and col-1 >=3 and col-1 <= 5:
     for i in range(3,6):
       for j in range(3,6):
         if a[i][j] == valor :
-          print("Jogada impossibilitada pelo quadrado 3x3")
-          passe = True
+          print("Jogada impossibilitada")
+          passe = False
           break
   elif lin-1 >= 3 and lin-1 <= 5 and col-1 >= 6:
     for i in range(3,6):
       for j in range(6,9):
         if a[i][j] == valor :
-          print("Jogada impossibilitada pelo quadrado 3x3")
-          passe = True
+          print("Jogada impossibilitada")
+          passe = False
           break
   elif lin-1 >=6 and col-1 <=2:
     for i in range(6,9):
       for j in range(3):
         if a[i][j] == valor :
-          print("Jogada impossibilitada pelo quadrado 3x3")
-          passe = True
+          print("Jogada impossibilitada")
+          passe = False
           break
   elif lin-1 >= 6 and col-1 >= 3 and col-1 <= 5:
     for i in range(6,9):
       for j in range(3,6):
         if a[i][j] == valor :
-          print("Jogada impossibilitada pelo quadrado 3x3")
-          passe = True
+          print("Jogada impossibilitada")
+          passe = False
           break
   elif lin-1 >= 6 and col-1 >= 6:
     for i in range(6,9):
       for j in range(6,9):
         if a[i][j] == valor :
-          print("Jogada impossibilitada pelo quadrado 3x3")
-          passe = True
+          print("Jogada impossibilitada")
+          passe = False
           break
-
- 
-  while passe == False:
-    
-
-    aux = True
-    
-  #VERIFICAR AS LINHAS
-    for j in range(9):
-      if valor == a[lin-1][j] and j!= col-1 and valor > 0:
-        print("Jogada impossibilitada pela linha")
-        print("Tente novamente um valor diferente de %d"%valor)
+  if passe == False:
+    return False
+   
+  aux = True
+  
+#VERIFICAR AS LINHAS
+  for j in range(9):
+    if valor == a[lin-1][j] and j!= col-1 and valor > 0:
+      print("Jogada impossibilitada")
+      print("Tente novamente um valor diferente de %d"%valor)
+      aux = False
+      return False
+      break
+      
+#VERIFICAR AS COLUNAS
+  if aux == True:
+    for i in range(9):
+      if valor == a[i][col-1] and i != lin-1 and valor > 0:
+        print("Jogada impossibilitada")
+        print("Tente novamente")
         aux = False
+        return False
         break
-        
-
-  #VERIFICAR AS COLUNAS
-    if aux == True:
-      for i in range(9):
-        if valor == a[i][col-1] and i != lin-1 and valor > 0:
-          print("Jogada impossibilitada pela coluna")
-          print("Tente novamente")
-          aux = False
-          break
-
-    if aux:
-      a[lin-1][col-1] =  valor
-        
-
-    passe = True
+#Adicionar o valor
+  return True
 
 # 05 - Função que verifica se uma jogada coincide com uma pista:
 def verificar_pista(jogada,matriz):
