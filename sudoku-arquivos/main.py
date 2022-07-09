@@ -42,7 +42,6 @@ try:
                         break
             if not valida_pistas:
                 break
-    print(cont)
     if cont < 81 and cont > 0 and valida_pistas:
         contador = cont
         matriz_jogadas = fun.acessarArquivo(arquivoJogadas)
@@ -50,15 +49,13 @@ try:
         for i in range(9):
             for j in range(9):
                 validador = True
-                if type(matriz_jogadas[i][j]) == type(int(1)):
+                if type(matriz_jogadas[i][j]) == type(1):
                     linha = str((i + 1))
                     col = ['A', 'B', 'C' ,'D', 'E', 'F', 'G', 'H', 'I']
                     coluna = col[j]
                     valor = str(matriz_jogadas[i][j])
                     jogada = coluna + ',' + linha + ':' + valor
-                    print(jogada)
                     valida2 = fun.verificarpista(jogada, pistas)
-                    print(valida2)
                     if valida2:
                         valida3 = fun.verificador(jogada[0], int(jogada[2]), int(jogada[4]), matriz_jogadas2)
                         print(valida3)
@@ -74,7 +71,6 @@ try:
                     else:
                         matriz_jogadas2[i][j] = valor
                         contador += 1
-        print(contador)
         if contador == 81:
             print("A grade foi preenchida com sucesso!")
         else:
@@ -123,6 +119,8 @@ except:
                 if compara:
                     matriz_jogadas = compara
                     fun.montarGrade(matriz_jogadas)
+                else:
+                    print("Nao foi possivel excluir essa jogada. Tente novamente.")
             else:
                 lance = fun.validar(jogada)
                 if lance:
@@ -140,6 +138,10 @@ except:
                                 print('Parabéns! Você conseguiu preencher toda a grade do jogo! :)')
                         else:
                             print("Jogada Impossibilitada. Tente novamente.")
+                    else:
+                        print("Sua jogada coincide co uma pista. Tente novamente.")
+                else:
+                    print("Jogada invalida. Tente Novamente.")
     else:
         print('Configuracao de dicas invalida.')
 

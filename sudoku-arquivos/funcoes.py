@@ -152,7 +152,6 @@ def verificar_pista(jogada,matriz):
         lin=int(jogada[3])-1
         col=letra_num(jogada[1])
         if matriz[lin][col] != ' ':
-            print('Sua jogada coincide com uma pista. Entre com uma jogada')
             return False 
         return True   
     except:
@@ -169,12 +168,10 @@ def validar(jogada):
         i=int(jogada[2])
         k=int(jogada[4])
     except:
-        print('Jogada Invalida.Entre um novo valor.')
         return False
  
 # Condições pra validar a jogada:
     if  (j not in col) or i > 9 or i < 1 or k > 9 or k < 1 or len(jogada) > 5:
-        print('Jogada Invalida.Entre um novo valor.')
         return False
     else:
         return True
@@ -200,7 +197,6 @@ def verificarpista(comando,matriz):
     linha = int(comando[2]) -1
     coluna = letra_num(comando[0])
     if matriz[linha][coluna] != ' ':
-        print('Sua jogada coincide com uma pista. Entre com uma jogada')
         return False
     return True   
 
@@ -214,7 +210,6 @@ def deletar(comando,matriz, pistas):
     try:
         linha = int(comando[3]) -1
     except:
-        print("Comando invalido")
         return False
     #matriz= grade atual
     if len(comando) == 4 and linha >= 0 and linha < 9 and (coluna1 in lista):
@@ -222,10 +217,9 @@ def deletar(comando,matriz, pistas):
             matriz[linha][coluna] = ' '
             return matriz
         else:
-            print('Uma pista nao pode ser apagada')
             return False
     else:
-        print("Comando invalido")
+        return False
 
 
 # Função que verifica o tamanho da matriz
