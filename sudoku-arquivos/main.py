@@ -65,12 +65,10 @@ try:
                     coluna = col[j]
                     valor = str(matriz_jogadas[i][j])
                     jogada = coluna + ',' + linha + ':' + valor
-                    print(jogada)
                     valida2 = fun.verificarpista(jogada, pistas)
                     if valida2:
                         # Verifica se a jogada inserida no arquivo está dentro das regras do jogo
                         valida3 = fun.verificador(jogada[0], int(jogada[2]), int(jogada[4]), matriz_jogadas2)
-                        print(matriz_jogadas2)
                         if valida3:
                             matriz_jogadas2[i][j] = int(valor)
                         else:
