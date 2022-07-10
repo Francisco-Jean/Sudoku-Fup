@@ -1,10 +1,9 @@
+# ARQUIVO COM TODAS AS FUNÇÕES UTILIZADAS NO PROGRAMA
+
 # 01 - Função para a organização e print da grade do jogo 
 # A partir de uma lista de coordenadas e valores:
 def montarGrade(grade):
-  # Referências das colunas da grade (A,B,...,'I') aos índices das colunas da matriz 'grade':
-  '''colunas = {'A':0, 'B':1, 'C':2, 'D':3, 'E':4, 'F':5, 'G':6, 'H':7, 'I':8, 'a':0, 'b':1, 
-  'c':2, 'd':3, 'e':4, 'f':5, 'g':6, 'h':7, 'i':8}'''
-  
+
   # Print da grade formatada:
   print("     A   B   C    D   E   F    G   H   I    ")
   print('  ++---+---+---++---+---+---++---+---+---++  ')
@@ -23,7 +22,7 @@ def montarGrade(grade):
 
 
 
-# 02 - Função para a retirada de possíveis espaços existentes na 'jogada' que poderiam 
+# 02 - Função para a retirada de possíveis espaços existentes na 'jogada'/'dicas' que poderiam 
 # dificultar a verificação dos valores:
 def organizarEntradas(data):
   if str(type(data)) == "<class 'str'>":
@@ -42,8 +41,8 @@ def acessarArquivo(arq):
     data = open(arq, 'r')
     for valor in data:
         if l[int(valor[2]) -1][let.index(valor[0])] == ' ':
-            valor = valor.strip()
             valor = valor.upper()
+            valor = organizarEntradas(valor)
             l[int(valor[2]) -1][let.index(valor[0])] = int(valor[4])
     return l
 
@@ -163,7 +162,7 @@ def validar(jogada):
     col=['A', 'B', 'C' ,'D', 'E', 'F', 'G', 'H', 'I']
   
   #Verificando os tipos da coluna, linha e valor. 
-    j=jogada[0].upper()
+    j = jogada[0].upper()
     try:
         i=int(jogada[2])
         k=int(jogada[4])
@@ -176,7 +175,7 @@ def validar(jogada):
     else:
         return True
 
-#07- Função que converte as letras da coluna em números:
+# 07 - Função que converte as letras da coluna em números:
 def letra_num(valor):
     col=['A', 'B', 'C' ,'D', 'E', 'F', 'G', 'H', 'I']
     valor = valor.upper()
@@ -184,15 +183,15 @@ def letra_num(valor):
         if valor == col[i]:
             return i
             
-#08- Função que converte os números da coluna em suas respectivas letras:
+# 08 - Função que converte os números da coluna em suas respectivas letras:
 def num_letra(valor):
     col={'A':1, 'B':2, 'C':3, 'D':4, 'E':5, 'F':6, 'G':7, 'H':8, 'I':9}
 
     for c in col:
-        if valor==col[c]:
+        if valor == col[c]:
             return c
             
- #09-Função de verificar pista alterada pra usar na função 10
+ # 09 - Função de verificar pista alterada pra usar na função 10
 def verificarpista(comando,matriz):
     linha = int(comando[2]) -1
     coluna = letra_num(comando[0])
@@ -202,7 +201,7 @@ def verificarpista(comando,matriz):
 
 # 10 - Função que deleta uma jogada requerida pelo jogador:
 def deletar(comando,matriz, pistas):
-    # comando= Dcol,lin
+    # comando = Dcol,lin
     lista = ['A', 'B', 'C' ,'D', 'E', 'F', 'G', 'H', 'I']
     coluna1=comando[1]
     coluna1=coluna1.upper()
@@ -211,7 +210,7 @@ def deletar(comando,matriz, pistas):
         linha = int(comando[3]) -1
     except:
         return False
-    #matriz= grade atual
+    # matriz = grade atual
     if len(comando) == 4 and linha >= 0 and linha < 9 and (coluna1 in lista):
         if verificar_pista(comando,pistas):
             matriz[linha][coluna] = ' '
@@ -222,7 +221,7 @@ def deletar(comando,matriz, pistas):
         return False
 
 
-# Função que verifica o tamanho da matriz
+# 11 - Função que verifica o tamanho da matriz
 def contar_tamanho(matriz):
     cont = 0
     for j in range(9):
